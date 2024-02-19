@@ -1,10 +1,14 @@
 package com.example.studieadministrationjavafx;
 
 import Studieadministration.DbSql;
+import Studieadministration.Fag;
 import Studieadministration.Studerende;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+import java.util.ArrayList;
 
 public class HelloController {
     @FXML
@@ -30,6 +34,9 @@ public class HelloController {
     private TextField telefon;
     @FXML
     private TextField klasse;
+
+    private
+    @FXML TextArea guitextview;
 
     @FXML
     protected void onOpretStuderendeClick() {
@@ -74,7 +81,7 @@ public class HelloController {
         DbSql db = new DbSql();
         String stdnrText = stdnr.getText();
         int snr = Integer.parseInt(stdnrText);
-        s = db.soegOplysOmStuderende(snr);
+        s = db.soegAlleOplysOmStuderende(snr);
         fnavn.setText(s.getFnavn());
         enavn.setText(s.getEnavn());
         Adresse.setText(s.getAdresse());
@@ -82,5 +89,10 @@ public class HelloController {
         telefon.setText(s.getMobil());
         String k = String.valueOf(s.getKlasse());
         klasse.setText(k);
+        ArrayList <Fag> fagliste = s.getTilmeldteFag();
+        for (int i = 0; i < fagliste.size(); i++) {
+            guitextview.appendText(fagliste.get(i).getFagnavn());
+            guitextview.appendText("\n");
+        }
     }
 }

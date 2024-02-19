@@ -264,6 +264,25 @@ public class DbSql {
         }
         return null;
     }
+
+    public Studerende soegAlleOplysOmStuderende(int stdnr) {
+        Studerende s = new Studerende();
+        s = soegOplysOmStuderende(stdnr);
+        try {
+            String sql = "select * from Studerendefag inner join fag on Studerendefag.fagID = fag.fagID where Studerendefag.stdnr =" + String.valueOf(stdnr);
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while (rs.next()) {
+                Fag f = new Fag();
+                f.setFagnavn(rs.getString("fagnavn"));
+                s.tilmeldteFag.add(f);
+            }
+            return s;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
     /*public void soegOplysOmFag(int fagnr) {
         try {
             String sql = "select * from DbSql.Fag where fagID =" + String.valueOf(fagnr);
@@ -314,7 +333,7 @@ public class DbSql {
                 s.setEnavn(rs.getString("enavn"));
                 s.setAdresse(rs.getString("adresse"));
                 s.setPostnr(rs.getString("postnr"));
-                s.setMobil(rs.getString("Telefon"));
+                s.setMobil(rs.getString("Telefonnr"));
                 String k = rs.getString("Klasse");
                 s.setKlasse(k.charAt(0));
                 String sql1 = "SELECT * from StuderendeFag left join fag on StuderendeFag.fagId=fag.fagId where StuderendeFag.stdnr="+nr;

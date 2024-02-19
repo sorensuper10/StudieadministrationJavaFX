@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studieadministrationjavafx.SceneController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="709.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.studieadministrationjavafx.HelloController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="2.0" BorderPane.alignment="CENTER" />
    </left>
@@ -58,7 +58,6 @@
             <TextField fx:id="klasse" layoutX="226.0" layoutY="362.0" />
             <Button layoutX="506.0" layoutY="163.0" mnemonicParsing="false" onAction="#onOpretStuderendeClickIStudieAdmin" prefHeight="49.0" prefWidth="154.0" text="Opret Studerende" />
             <Label fx:id="studerendeOprettet" layoutX="552.0" layoutY="143.0" />
-            <Button layoutX="554.0" layoutY="335.0" mnemonicParsing="false" onAction="#switchToScene1" text="Tilbage" />
          </children>
       </AnchorPane>
    </center>
